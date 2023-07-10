@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <%- include('./partials/navbar'); %>
+  </header>
+  <main>
+    <section id="advertisers" class="advertisers-service-sec pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="section-header text-center">
+            <h2 class="fw-bold fs-1">
+              Your
+              <span class="b-class-secondary">nice </span>blogs
+            </h2>
+            <p class="sec-icon"><i class="fa-solid fa-gear"></i></p>
+          </div>
+        </div>
+        <div class="row mt-5 mt-md-4 row-cols-1 row-cols-sm-1 row-cols-md-3 justify-content-center">
+          <% if (blogs.length > 0) { %>
+            <% blogs.reverse().forEach(blog => { %>
+              <a href="/all-blogs/<%= blog._id %>">
+                <div class="col">
+                  <div class="service-card">
+                    <div class="icon-wrapper">
+                      <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h3><%= blog.title %></h3>
+                    <p>
+                      <%= blog.body %>
+                    </p>
+                  </div>
+                </div>
+              </a>
+            <% }) %>
+          <% } %>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
